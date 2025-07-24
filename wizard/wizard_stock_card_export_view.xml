@@ -1,0 +1,35 @@
+<odoo>
+    <record id="wizard_stock_card_view_form" model="ir.ui.view">
+        <field name="name">wizard_stock_card_view_form</field>
+        <field name="model">wizard.stock.card.export</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="product_id"/>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                    <field name="company_id"/>
+                </group>
+                <footer>
+                    <button name="action_export_stock_card" string="In" class="oe_highlight" type="object"/>
+                     hoặc
+                    <button string="Hủy" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_stock_card_export_action" model="ir.actions.act_window">
+        <field name="name">Xuất Thẻ Kho</field>
+        <field name="res_model">wizard.stock.card.export</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_stock_card_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_wizard_stock_card_export"
+              name="Xuất Thẻ Kho"
+              sequence="260"
+              action="stock_card_export.wizard_stock_card_export_action"
+              parent="stock.menu_warehouse_report"/>
+</odoo>
